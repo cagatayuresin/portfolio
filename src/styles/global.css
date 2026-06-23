@@ -589,18 +589,52 @@ button:focus-visible {
 
 @media (max-width: 700px) {
   .nav {
+    display: grid;
+    grid-template-columns: 1fr;
     height: auto;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    align-items: flex-start;
-    gap: 12px;
+    min-height: 64px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: start;
+    justify-content: start;
+    gap: 8px;
+  }
+  .nav-brand {
+    min-width: 0;
+    flex: 0 1 auto;
+    font-size: 1rem;
   }
   .nav-links {
-    justify-content: flex-end;
+    margin-left: 0;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    flex: 0 1 auto;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 8px 12px;
+    gap: 6px;
   }
   .nav-links a {
-    font-size: 0.86rem;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-soft);
+    color: var(--text-soft);
+    justify-content: center;
+    gap: 0;
+    font-size: 0;
+  }
+  .nav-links a:hover {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 42%, var(--border));
+  }
+  .nav-links a .icon {
+    --icon-size: 19px;
+  }
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
   }
 }

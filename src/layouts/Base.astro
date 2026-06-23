@@ -21,6 +21,7 @@ interface Props {
   tags?: string[];
   lang?: string;
   locale?: string;
+  robots?: string;
 }
 
 const {
@@ -39,6 +40,7 @@ const {
   tags = [],
   lang = "en",
   locale = "en_US",
+  robots = "index, follow",
 } = Astro.props;
 
 const site = Astro.site ?? new URL("https://cagatayuresin.com");
@@ -97,7 +99,7 @@ const jsonLd =
     <meta name="description" content={description} />
     <meta name="author" content="Çağatay Üresin" />
     {tags.length > 0 && <meta name="keywords" content={tags.join(", ")} />}
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robots} />
     <meta property="og:site_name" content="Çağatay Üresin" />
     <meta property="og:locale" content={locale} />
     <meta property="og:type" content={type} />

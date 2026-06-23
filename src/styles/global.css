@@ -278,7 +278,7 @@ button:focus-visible {
 
 /* ---------- Article (Markdown render) ---------- */
 .prose {
-  padding: 40px 0 80px;
+  padding: 40px 20px 80px;
 }
 .prose h1 {
   font-size: 2.2rem;
@@ -321,6 +321,58 @@ button:focus-visible {
   border-radius: 6px;
   font-family: var(--mono);
   font-size: 0.88em;
+}
+.prose table {
+  width: 100%;
+  margin: 1.7em 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(13, 17, 23, 0.05);
+}
+.prose th,
+.prose td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+.prose th {
+  background: color-mix(in srgb, var(--accent-soft) 70%, var(--bg-card));
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 750;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.prose td {
+  color: var(--text);
+  font-size: 0.94rem;
+  overflow-wrap: break-word;
+}
+.prose tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--bg-soft) 58%, transparent);
+}
+.prose tbody tr:hover td {
+  background: color-mix(in srgb, var(--accent-soft) 64%, var(--bg-card));
+}
+.prose tr:last-child td {
+  border-bottom: 0;
+}
+.prose th:not(:last-child),
+.prose td:not(:last-child) {
+  border-right: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+}
+.prose td[align="right"],
+.prose th[align="right"] {
+  text-align: right;
+}
+:root.dark .prose table {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
 }
 /* Shiki kod blokları */
 .prose pre {
@@ -577,6 +629,76 @@ button:focus-visible {
 }
 
 @media (max-width: 520px) {
+  .prose {
+    overflow-x: hidden;
+  }
+  .prose h1 {
+    font-size: 1.78rem;
+    line-height: 1.18;
+    overflow-wrap: anywhere;
+  }
+  .prose h2 {
+    font-size: 1.34rem;
+    line-height: 1.22;
+  }
+  .prose p,
+  .prose li {
+    overflow-wrap: break-word;
+  }
+  .prose table {
+    display: block;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+  .prose thead {
+    display: none;
+  }
+  .prose tbody {
+    display: grid;
+    gap: 12px;
+  }
+  .prose tr {
+    display: grid;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-card);
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(13, 17, 23, 0.05);
+  }
+  .prose th,
+  .prose td {
+    min-width: 0;
+    padding: 12px 13px;
+    font-size: 0.88rem;
+  }
+  .prose td {
+    display: grid;
+    grid-template-columns: minmax(96px, 0.4fr) minmax(0, 1fr);
+    gap: 12px;
+    border-right: 0;
+    background: transparent;
+  }
+  .prose td::before {
+    content: attr(data-label);
+    color: var(--text-soft);
+    font-size: 0.74rem;
+    font-weight: 750;
+    line-height: 1.35;
+  }
+  .prose tbody tr:nth-child(even) td,
+  .prose tbody tr:hover td {
+    background: transparent;
+  }
+  .prose tr:last-child td:not(:last-child),
+  .prose td:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+  }
+  :root.dark .prose tr {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+  }
   .skill-grid {
     grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
     gap: 10px;
